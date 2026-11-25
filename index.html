@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CampusConnect - discover campus events and communities.">
+  <title>CampusConnect | Your campus, connected</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">C</span> CampusConnect</a>
+    <nav aria-label="Main navigation">
+      <a href="#events">Events</a><a href="#clubs">Clubs</a><a href="#dashboard">My activity</a>
+    </nav>
+    <div class="top-actions"><span id="welcomeText" class="welcome">Welcome, Guest</span><button class="btn btn-small" id="authButton">Sign in</button></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">THE CAMPUS COMMUNITY PLATFORM</p>
+        <h1>Find your people.<br><span>Make campus count.</span></h1>
+        <p class="hero-sub">Discover events, join communities and make every campus moment matter.</p>
+        <a class="btn" href="#events">Explore events <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-art" aria-label="Campus community illustration">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="art-card card-a"><span>✦</span><b>Meet</b><small>your community</small></div>
+        <div class="art-card card-b"><span>◎</span><b>Discover</b><small>what's happening</small></div>
+        <div class="art-center">CC</div>
+        <div class="floating f-one">🎨</div><div class="floating f-two">🎤</div><div class="floating f-three">⚡</div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Platform highlights">
+      <div><strong id="eventCount">0</strong><span>Upcoming events</span></div>
+      <div><strong id="clubCount">0</strong><span>Campus clubs</span></div>
+      <div><strong id="myCount">0</strong><span>My registrations</span></div>
+    </section>
+
+    <section class="section" id="events">
+      <div class="section-heading"><div><p class="eyebrow">DON'T MISS OUT</p><h2>Explore events</h2></div><button class="btn btn-outline" id="createEventButton">+ Create event</button></div>
+      <div class="filters">
+        <input id="searchInput" type="search" placeholder="Search events..." aria-label="Search events">
+        <select id="categoryFilter" aria-label="Filter by category"><option value="All">All categories</option><option>Technology</option><option>Arts</option><option>Sports</option><option>Culture</option><option>Career</option></select>
+      </div>
+      <div id="eventGrid" class="event-grid"></div>
+    </section>
+
+    <section class="section clubs-section" id="clubs">
+      <div class="section-heading"><div><p class="eyebrow">FIND YOUR CREW</p><h2>Campus clubs</h2></div></div>
+      <div id="clubGrid" class="club-grid"></div>
+    </section>
+
+    <section class="section dashboard" id="dashboard">
+      <div class="section-heading"><div><p class="eyebrow">YOUR CAMPUS LIFE</p><h2>My activity</h2></div></div>
+      <div class="dashboard-grid">
+        <div class="panel"><h3>My event registrations</h3><div id="myRegistrations" class="empty-state">Sign in and register for an event to see it here.</div></div>
+        <div class="panel"><h3>Quick profile</h3><div id="profilePanel" class="empty-state">Sign in to view your student profile.</div><button class="text-button" id="editProfileButton">Edit profile →</button></div>
+      </div>
+      <div class="panel feedback-panel"><h3>Share event feedback</h3><form id="feedbackForm" class="inline-form"><select id="feedbackEvent" required aria-label="Choose event"></select><select id="feedbackRating" aria-label="Rating"><option value="5">★★★★★ - Excellent</option><option value="4">★★★★ - Great</option><option value="3">★★★ - Good</option><option value="2">★★ - Fair</option><option value="1">★ - Needs improvement</option></select><input id="feedbackText" placeholder="Tell us what you think" required><button class="btn btn-small">Submit</button></form><p id="feedbackMessage" class="muted" aria-live="polite"></p></div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">C</span> CampusConnect</a><span>Made for campus communities · Student project demo</span></footer>
+
+  <dialog id="authDialog"><form method="dialog" id="authForm" class="dialog-form"><button class="close" aria-label="Close">×</button><p class="eyebrow">WELCOME TO CAMPUSCONNECT</p><h2 id="authTitle">Sign in</h2><label>Full name<input id="authName" placeholder="Your name" required></label><label>Email<input id="authEmail" type="email" placeholder="student@university.edu" required></label><label>Department<input id="authDepartment" placeholder="e.g. Computer Science"></label><div class="dialog-actions"><button type="button" class="btn btn-outline" id="switchAuth">Create account</button><button class="btn" id="authSubmit">Continue</button></div></form></dialog>
+
+  <dialog id="eventDialog"><form method="dialog" id="eventForm" class="dialog-form"><button class="close" aria-label="Close">×</button><p class="eyebrow">GROW THE COMMUNITY</p><h2>Create an event</h2><label>Event name<input id="newEventName" required placeholder="e.g. Design meetup"></label><label>Category<select id="newEventCategory"><option>Technology</option><option>Arts</option><option>Sports</option><option>Culture</option><option>Career</option></select></label><label>Date<input id="newEventDate" type="date" required></label><label>Venue<input id="newEventVenue" required placeholder="Campus venue"></label><label>Short description<textarea id="newEventDescription" rows="3" required placeholder="What is this event about?"></textarea></label><button class="btn">Publish event</button></form></dialog>
+
+  <dialog id="profileDialog"><form method="dialog" id="profileForm" class="dialog-form"><button class="close" aria-label="Close">×</button><p class="eyebrow">YOUR DETAILS</p><h2>Edit profile</h2><label>Full name<input id="profileName" required></label><label>Department<input id="profileDepartment"></label><label>Year of study<input id="profileYear" placeholder="e.g. 3rd year"></label><button class="btn">Save profile</button></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
